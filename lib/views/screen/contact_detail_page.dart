@@ -1,5 +1,8 @@
+import 'dart:typed_data';
+
 import 'package:contact_diary/utils/Back_Button.dart';
 import 'package:contact_diary/utils/utils_routes_page.dart';
+import 'package:contact_diary/views/modals/Global_varibles.dart';
 import 'package:flutter/material.dart';
 
 class ContactDetailPage extends StatefulWidget {
@@ -34,12 +37,9 @@ class _ContactDetailPageState extends State<ContactDetailPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(width: s.width * 0.32, height: s.height * 0.2),
-                const CircleAvatar(
+                 CircleAvatar(
                   radius: 60,
-                  child: Icon(
-                    Icons.account_circle,
-                    size: 120,
-                  ),
+                  foregroundImage: FileImage(allGlobalvar.image!),
                 ),
                 SizedBox(width: s.width * 0.1),
                 IconButton(
@@ -66,7 +66,7 @@ class _ContactDetailPageState extends State<ContactDetailPage> {
             ),
             SizedBox(height: s.height * 0.05),
             Text(
-              "Name",
+              "${allGlobalvar.Fname} ${allGlobalvar.Lname}",
               style: TextStyle(
                 color: Colors.black,
                 wordSpacing: 2,
@@ -78,7 +78,7 @@ class _ContactDetailPageState extends State<ContactDetailPage> {
               children: [
                 SizedBox(width: s.width * 0.05),
                 Text(
-                  "+91 Number",
+                  "+91 ${allGlobalvar.Pnumber}",
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: s.height * 0.028,
