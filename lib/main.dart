@@ -1,3 +1,4 @@
+import 'package:contact_diary/utils/image_utils.dart';
 import 'package:contact_diary/utils/utils_routes_page.dart';
 import 'package:contact_diary/views/screen/contact_add_page.dart';
 import 'package:contact_diary/views/screen/contact_detail_page.dart';
@@ -17,6 +18,10 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   // This widget is the root of your application.
+
+  bool viewchange = false;
+  int n = 10;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -39,48 +44,96 @@ class _MyAppState extends State<MyApp> {
                     fontSize: 20,
                   ),
                 ),
+                actions: [
+                  IconButton(
+                    onPressed: () {
+                      setState(() {
+                        viewchange = !viewchange;
+                      });
+                    },
+                    icon: viewchange
+                        ? const Icon(Icons.list)
+                        : const Icon(Icons.grid_view),
+                  ),
+                ],
               ),
-              body: Padding(
-                padding: const EdgeInsets.all(5),
-                child: ListView(
-                  padding: EdgeInsets.zero,
-                  children: List.generate(
-                    20,
-                    (index) => Scrollbar(
-                      child: ListTile(
-                        leading: const CircleAvatar(
-                          radius: 50,
-                          child: Icon(
-                            Icons.account_circle,
-                            size: 50,
-                          ),
-                        ),
-                        onTap: () {
-                          Navigator.of(context)
-                              .pushNamed(allroutes.condetailpage);
-                        },
-                        title: Text("Index ${index + 1}"),
-                        subtitle: const Text("mobile No."),
-                        trailing: IconButton(
-                          onPressed: () {},
-                          icon: const Icon(
-                            Icons.phone,
-                            color: Colors.green,
+              body: viewchange
+                  ? ListView(
+                      padding: EdgeInsets.zero,
+                      children: List.generate(
+                        n,
+                        (index) => Scrollbar(
+                          child: ListTile(
+                            leading: const CircleAvatar(
+                              radius: 50,
+                              child: Icon(
+                                Icons.account_circle,
+                                size: 50,
+                              ),
+                            ),
+                            onTap: () {
+                              Navigator.of(context)
+                                  .pushNamed(allroutes.condetailpage);
+                            },
+                            title: Text("Index ${index + 1}"),
+                            subtitle: const Text("mobile No."),
+                            trailing: IconButton(
+                              onPressed: () {},
+                              icon: const Icon(
+                                Icons.phone,
+                                color: Colors.green,
+                              ),
+                            ),
                           ),
                         ),
                       ),
+                    )
+                  : Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: GridView.builder(
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisSpacing: 5,
+                          mainAxisSpacing: 5,
+                          childAspectRatio: 2 / 3,
+                          crossAxisCount: 3,
+                        ),
+                        itemCount: n,
+                        itemBuilder: (context, index) => Column(
+                          children: [
+                            Expanded(
+                              flex: 3,
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: Colors.primaries[index % 18].shade100,
+                                  image: DecorationImage(
+                                    image: NetworkImage(
+                                      imagenet[index % imagenet.length],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              flex: 1,
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: Colors.primaries[index % 18].shade500,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
-                  ),
-                ),
+              floatingActionButton: FloatingActionButton(
+                onPressed: () {
+                  setState(() {
+                    Navigator.of(context).pushNamed(allroutes.conaddpage);
+                  });
+                },
+                child: const Icon(Icons.add),
               ),
-          floatingActionButton: FloatingActionButton(
-              onPressed: () {
-                setState(() {
-                  Navigator.of(context).pushNamed(allroutes.conaddpage);
-                });
-              },
-              child: const Icon(Icons.add),
-            ),
             ),
       },
     );
