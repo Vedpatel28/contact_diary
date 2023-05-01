@@ -19,7 +19,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   // This widget is the root of your application.
 
-  bool viewchange = false;
+  bool viewchange = true;
   int n = 10;
 
   @override
@@ -52,25 +52,25 @@ class _MyAppState extends State<MyApp> {
                       });
                     },
                     icon: viewchange
-                        ? const Icon(Icons.list)
-                        : const Icon(Icons.grid_view),
+                        ? const Icon(Icons.grid_view)
+                        : const Icon(Icons.list),
                   ),
                 ],
               ),
               body: viewchange
+                  // ListView
                   ? ListView(
                       padding: EdgeInsets.zero,
                       children: List.generate(
                         n,
                         (index) => Scrollbar(
                           child: ListTile(
-                            leading: const CircleAvatar(
+                            leading: CircleAvatar(
                               radius: 50,
-                              child: Icon(
-                                Icons.account_circle,
-                                size: 50,
-                              ),
+                              foregroundImage: NetworkImage(
+                                  imagenet[index % imagenet.length]),
                             ),
+                            // imagenet[index % imagenet.length]),fit: BoxFit.cover,
                             onTap: () {
                               Navigator.of(context)
                                   .pushNamed(allroutes.condetailpage);
@@ -88,11 +88,12 @@ class _MyAppState extends State<MyApp> {
                         ),
                       ),
                     )
+                  // GridView
                   : Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: GridView.builder(
                         gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
+                        const SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisSpacing: 5,
                           mainAxisSpacing: 5,
                           childAspectRatio: 2 / 3,
@@ -108,8 +109,8 @@ class _MyAppState extends State<MyApp> {
                                   color: Colors.primaries[index % 18].shade100,
                                   image: DecorationImage(
                                     image: NetworkImage(
-                                      imagenet[index % imagenet.length],
-                                    ),
+                                        imagenet[index % imagenet.length]),
+                                    fit: BoxFit.cover,
                                   ),
                                 ),
                               ),

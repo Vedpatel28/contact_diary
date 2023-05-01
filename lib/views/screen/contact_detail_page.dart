@@ -1,5 +1,3 @@
-import 'dart:typed_data';
-
 import 'package:contact_diary/utils/Back_Button.dart';
 import 'package:contact_diary/utils/utils_routes_page.dart';
 import 'package:contact_diary/views/modals/Global_varibles.dart';
