@@ -17,10 +17,9 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  // This widget is the root of your application.
-
   bool viewchange = true;
   int n = 10;
+  bool themechange = false;
 
   @override
   Widget build(BuildContext context) {
@@ -28,8 +27,31 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         useMaterial3: true,
-        colorSchemeSeed: Colors.blue,
+        appBarTheme: const AppBarTheme(
+          color: Colors.white,
+        ),
+        floatingActionButtonTheme: const FloatingActionButtonThemeData(
+          backgroundColor: Colors.teal,
+          foregroundColor: Colors.black,
+        ),
       ),
+      darkTheme: ThemeData(
+        useMaterial3: true,
+        floatingActionButtonTheme: FloatingActionButtonThemeData(
+          backgroundColor: Colors.teal,
+          foregroundColor: Colors.black,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15),
+          ),
+        ),
+        brightness: Brightness.dark,
+        textTheme: const TextTheme(
+          bodyMedium: TextStyle(
+            color: Colors.white,
+          ),
+        ),
+      ),
+      themeMode: themechange ? ThemeMode.dark : ThemeMode.light,
       routes: {
         allroutes.conaddpage: (context) => const ContactAddPage(),
         allroutes.coneditpage: (context) => const ContactEditpage(),
@@ -39,12 +61,22 @@ class _MyAppState extends State<MyApp> {
                 title: const Text(
                   "Contacts",
                   style: TextStyle(
-                    color: Colors.black,
                     fontWeight: FontWeight.w700,
                     fontSize: 20,
                   ),
                 ),
                 actions: [
+                  IconButton(
+                      onPressed: () {
+                        setState(() {
+                          themechange = !themechange;
+                        });
+                      },
+                      icon: Icon(
+                        themechange
+                            ? Icons.light_mode_outlined
+                            : Icons.dark_mode_outlined,
+                      )),
                   IconButton(
                     onPressed: () {
                       setState(() {
@@ -93,7 +125,7 @@ class _MyAppState extends State<MyApp> {
                       padding: const EdgeInsets.all(8.0),
                       child: GridView.builder(
                         gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
+                            const SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisSpacing: 5,
                           mainAxisSpacing: 5,
                           childAspectRatio: 2 / 3,

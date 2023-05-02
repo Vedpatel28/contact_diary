@@ -20,7 +20,6 @@ class _ContactDetailPageState extends State<ContactDetailPage> {
         title: const Text(
           "Contacts",
           style: TextStyle(
-            color: Colors.black,
             fontWeight: FontWeight.w700,
             fontSize: 20,
           ),
@@ -35,7 +34,7 @@ class _ContactDetailPageState extends State<ContactDetailPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(width: s.width * 0.32, height: s.height * 0.2),
-                 CircleAvatar(
+                CircleAvatar(
                   radius: 60,
                   foregroundImage: FileImage(allGlobalvar.image!),
                 ),
@@ -46,7 +45,6 @@ class _ContactDetailPageState extends State<ContactDetailPage> {
                   },
                   icon: Icon(
                     Icons.delete,
-                    color: Colors.black,
                     size: s.height * 0.03,
                   ),
                 ),
@@ -57,7 +55,6 @@ class _ContactDetailPageState extends State<ContactDetailPage> {
                   icon: Icon(
                     Icons.edit,
                     size: s.height * 0.028,
-                    color: Colors.black,
                   ),
                 ),
               ],
@@ -66,7 +63,6 @@ class _ContactDetailPageState extends State<ContactDetailPage> {
             Text(
               "${allGlobalvar.Fname} ${allGlobalvar.Lname}",
               style: TextStyle(
-                color: Colors.black,
                 wordSpacing: 2,
                 fontSize: s.height * 0.04,
               ),
@@ -78,7 +74,6 @@ class _ContactDetailPageState extends State<ContactDetailPage> {
                 Text(
                   "+91 ${allGlobalvar.Pnumber}",
                   style: TextStyle(
-                    color: Colors.black,
                     fontSize: s.height * 0.028,
                   ),
                 ),
@@ -96,23 +91,23 @@ class _ContactDetailPageState extends State<ContactDetailPage> {
               children: [
                 CircleAvatar(
                   backgroundColor: Colors.green,
-                  radius: s.height*0.03,
+                  radius: s.height * 0.03,
                   child: const Icon(Icons.phone, color: Colors.white),
                 ),
                 CircleAvatar(
                   backgroundColor: Colors.orange,
-                  radius: s.height*0.03,
+                  radius: s.height * 0.03,
                   child: const Icon(Icons.message, color: Colors.white),
                 ),
                 CircleAvatar(
                   backgroundColor: Colors.blue.shade300,
-                  radius: s.height*0.03,
+                  radius: s.height * 0.03,
                   child: const Icon(Icons.email_rounded, color: Colors.white),
                 ),
                 CircleAvatar(
                   backgroundColor: Colors.orange,
-                  radius: s.height*0.03,
-                  child: const Icon(Icons.share,color: Colors.white),
+                  radius: s.height * 0.03,
+                  child: const Icon(Icons.share, color: Colors.white),
                 ),
               ],
             ),

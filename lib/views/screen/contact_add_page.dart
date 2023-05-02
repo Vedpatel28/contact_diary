@@ -28,7 +28,6 @@ class _ContactAddPageState extends State<ContactAddPage> {
         title: const Text(
           "Add",
           style: TextStyle(
-            color: Colors.black,
             fontWeight: FontWeight.w700,
             fontSize: 20,
           ),
@@ -36,13 +35,21 @@ class _ContactAddPageState extends State<ContactAddPage> {
         actions: [
           GestureDetector(
             onTap: () {
-              Navigator.of(context).pushNamed(allroutes.homepage,);
+              Navigator.of(context).pushNamed(
+                allroutes.homepage,
+              );
               setState(() {
-                if(formkey.currentState!.validate()){
+                if (formkey.currentState!.validate()) {
                   formkey.currentState!.save();
-                  ScaffoldMessenger.of(context).showSnackBar(errorsnackBar(text: "Successfully Add Contact", color: Colors.green),);
-                }else{
-                  ScaffoldMessenger.of(context).showSnackBar(errorsnackBar(text: "Sum thing Error !!", color: Colors.redAccent),);
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    errorsnackBar(
+                        text: "Successfully Add Contact", color: Colors.green),
+                  );
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    errorsnackBar(
+                        text: "Sum thing Error !!", color: Colors.redAccent),
+                  );
                 }
               });
             },
@@ -72,9 +79,6 @@ class _ContactAddPageState extends State<ContactAddPage> {
                 Container(
                   height: s.height * 0.2,
                   width: s.width,
-                  decoration: const BoxDecoration(
-                    color: Colors.white,
-                  ),
                   alignment: Alignment.center,
                   child: Stack(
                     alignment: Alignment.bottomRight,
@@ -88,7 +92,6 @@ class _ContactAddPageState extends State<ContactAddPage> {
                             : null,
                         child: const Text(
                           "ADD",
-                          style: TextStyle(color: Colors.black),
                         ),
                       ),
                       Container(
@@ -237,11 +240,9 @@ class _ContactAddPageState extends State<ContactAddPage> {
                   validator: (value) {
                     if (value!.isEmpty) {
                       return "Enter Contect Number";
-                    }
-                    else if(value.length < 10){
+                    } else if (value.length < 10) {
                       return "Enter 10 Digits...";
-                    }
-                    else {
+                    } else {
                       return null;
                     }
                   },
