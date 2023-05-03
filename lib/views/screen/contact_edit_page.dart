@@ -25,15 +25,16 @@ class _ContactEditpageState extends State<ContactEditpage> {
         title: const Text(
           "Edit Contact",
           style: TextStyle(
-            color: Colors.black,
             fontWeight: FontWeight.w700,
             fontSize: 20,
           ),
         ),
         actions: [
-          GestureDetector(onTap: () {
-            Navigator.of(context).pushNamed(allroutes.homepage);
-          },child: const Icon(Icons.check_rounded, size: 30)),
+          GestureDetector(
+              onTap: () {
+                Navigator.of(context).pushNamed(allroutes.homepage);
+              },
+              child: const Icon(Icons.check_rounded, size: 30)),
           const Icon(
             Icons.check_rounded,
             size: 10,
@@ -67,7 +68,6 @@ class _ContactEditpageState extends State<ContactEditpage> {
                         : null,
                     child: const Text(
                       "ADD",
-                      style: TextStyle(color: Colors.black),
                     ),
                   ),
                   Container(
@@ -146,7 +146,6 @@ class _ContactEditpageState extends State<ContactEditpage> {
             const Text(
               "First Name",
               style: TextStyle(
-                color: Colors.black,
                 fontSize: 20,
               ),
             ),
@@ -162,7 +161,6 @@ class _ContactEditpageState extends State<ContactEditpage> {
             const Text(
               "Last Name",
               style: TextStyle(
-                color: Colors.black,
                 fontSize: 20,
               ),
             ),
@@ -178,7 +176,6 @@ class _ContactEditpageState extends State<ContactEditpage> {
             const Text(
               "Phone number",
               style: TextStyle(
-                color: Colors.black,
                 fontSize: 20,
               ),
             ),
@@ -194,7 +191,6 @@ class _ContactEditpageState extends State<ContactEditpage> {
             const Text(
               "Email",
               style: TextStyle(
-                color: Colors.black,
                 fontSize: 20,
               ),
             ),

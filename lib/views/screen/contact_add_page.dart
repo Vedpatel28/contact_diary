@@ -170,7 +170,6 @@ class _ContactAddPageState extends State<ContactAddPage> {
                 const Text(
                   "First Name",
                   style: TextStyle(
-                    color: Colors.black,
                     fontSize: 20,
                   ),
                 ),
@@ -201,7 +200,6 @@ class _ContactAddPageState extends State<ContactAddPage> {
                 const Text(
                   "Last Name",
                   style: TextStyle(
-                    color: Colors.black,
                     fontSize: 20,
                   ),
                 ),
@@ -229,7 +227,6 @@ class _ContactAddPageState extends State<ContactAddPage> {
                 const Text(
                   "Phone number",
                   style: TextStyle(
-                    color: Colors.black,
                     fontSize: 20,
                   ),
                 ),
@@ -263,7 +260,6 @@ class _ContactAddPageState extends State<ContactAddPage> {
                 const Text(
                   "Email",
                   style: TextStyle(
-                    color: Colors.black,
                     fontSize: 20,
                   ),
                 ),
