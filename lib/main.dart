@@ -152,7 +152,7 @@ class _MyAppState extends State<MyApp> {
                               child: GestureDetector(
                                 onTap: () {
                                   Navigator.of(context)
-                                      .pushNamed(allroutes.condetailpage); |
+                                      .pushNamed(allroutes.condetailpage);
                                 },
                                 child: Container(
                                   decoration: BoxDecoration(
