@@ -4,8 +4,21 @@ import 'package:contact_diary/views/screen/contact_add_page.dart';
 import 'package:contact_diary/views/screen/contact_detail_page.dart';
 import 'package:contact_diary/views/screen/contact_edit_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  SystemChrome.setPreferredOrientations(
+    [
+      DeviceOrientation.portraitUp,
+    ],
+  );
+
+  SystemChrome.setSystemUIOverlayStyle(
+    SystemUiOverlayStyle.dark,
+  );
+
   runApp(const MyApp());
 }
 

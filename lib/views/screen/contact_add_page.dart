@@ -176,6 +176,9 @@ class _ContactAddPageState extends State<ContactAddPage> {
                 ),
                 TextFormField(
                   textInputAction: TextInputAction.next,
+
+                  // initialValue: allGlobalvar.Fname,
+
                   initialValue: allGlobalvar.Fname,
                   validator: (value) {
                     if (value!.isEmpty) {
