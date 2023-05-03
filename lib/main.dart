@@ -149,13 +149,20 @@ class _MyAppState extends State<MyApp> {
                           children: [
                             Expanded(
                               flex: 3,
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.primaries[index % 18].shade100,
-                                  image: DecorationImage(
-                                    image: NetworkImage(
-                                        imagenet[index % imagenet.length]),
-                                    fit: BoxFit.cover,
+                              child: GestureDetector(
+                                onTap: () {
+                                  Navigator.of(context)
+                                      .pushNamed(allroutes.condetailpage); |
+                                },
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    color:
+                                        Colors.primaries[index % 18].shade100,
+                                    image: DecorationImage(
+                                      image: NetworkImage(
+                                          imagenet[index % imagenet.length]),
+                                      fit: BoxFit.cover,
+                                    ),
                                   ),
                                 ),
                               ),
