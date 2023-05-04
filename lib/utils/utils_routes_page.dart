@@ -1,7 +1,7 @@
 class allroutes {
+  static String homepage = "/";
   static String coneditpage = "ContactEditPage";
   static String condetailpage = "ContactDetailPage";
-  static String splashscreen = "splashscreen";
+  static String splashscreen = "splasescreen";
   static String conaddpage = "ContactAddPage";
-  static String homepage = "/";
 }

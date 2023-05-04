@@ -5,7 +5,6 @@ import 'package:contact_diary/views/screen/contact_detail_page.dart';
 import 'package:contact_diary/views/screen/contact_edit_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
 import 'views/screen/splash_screen.dart';
 
 void main() {
@@ -75,8 +74,7 @@ class _MyAppState extends State<MyApp> {
         allroutes.condetailpage: (context) => const ContactDetailPage(),
         allroutes.homepage: (context) => Scaffold(
               appBar: AppBar(
-                title: const Text(
-                  "Contacts",
+                title: const Text("Contacts",
                   style: TextStyle(
                     fontWeight: FontWeight.w700,
                     fontSize: 20,
@@ -84,16 +82,17 @@ class _MyAppState extends State<MyApp> {
                 ),
                 actions: [
                   IconButton(
-                      onPressed: () {
-                        setState(() {
-                          themechange = !themechange;
-                        });
-                      },
-                      icon: Icon(
-                        themechange
-                            ? Icons.light_mode_outlined
-                            : Icons.dark_mode_outlined,
-                      )),
+                    onPressed: () {
+                      setState(() {
+                        themechange = !themechange;
+                      });
+                    },
+                    icon: Icon(
+                      themechange
+                          ? Icons.light_mode_outlined
+                          : Icons.dark_mode_outlined,
+                    ),
+                  ),
                   IconButton(
                     onPressed: () {
                       setState(() {
@@ -116,13 +115,10 @@ class _MyAppState extends State<MyApp> {
                           child: ListTile(
                             leading: CircleAvatar(
                               radius: 50,
-                              foregroundImage: NetworkImage(
-                                  imagenet[index % imagenet.length]),
+                              foregroundImage: NetworkImage(imagenet[index % imagenet.length]),
                             ),
-                            // imagenet[index % imagenet.length]),fit: BoxFit.cover,
                             onTap: () {
-                              Navigator.of(context)
-                                  .pushNamed(allroutes.condetailpage);
+                              Navigator.of(context).pushNamed(allroutes.condetailpage);
                             },
                             title: Text("Index ${index + 1}"),
                             subtitle: const Text("mobile No."),
@@ -164,7 +160,8 @@ class _MyAppState extends State<MyApp> {
                                         Colors.primaries[index % 18].shade100,
                                     image: DecorationImage(
                                       image: NetworkImage(
-                                          imagenet[index % imagenet.length]),
+                                        imagenet[index % imagenet.length],
+                                      ),
                                       fit: BoxFit.cover,
                                     ),
                                   ),
