@@ -6,6 +6,8 @@ import 'package:contact_diary/views/screen/contact_edit_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'views/screen/splash_screen.dart';
+
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -65,9 +67,11 @@ class _MyAppState extends State<MyApp> {
         ),
       ),
       themeMode: themechange ? ThemeMode.dark : ThemeMode.light,
+      initialRoute: allroutes.splashscreen,
       routes: {
         allroutes.conaddpage: (context) => const ContactAddPage(),
         allroutes.coneditpage: (context) => const ContactEditpage(),
+        allroutes.splashscreen: (context) => const splasescreen(),
         allroutes.condetailpage: (context) => const ContactDetailPage(),
         allroutes.homepage: (context) => Scaffold(
               appBar: AppBar(
