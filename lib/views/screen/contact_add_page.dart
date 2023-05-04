@@ -19,6 +19,8 @@ class _ContactAddPageState extends State<ContactAddPage> {
 
   ImagePicker imagepic = ImagePicker();
 
+  int index = 0;
+
   @override
   Widget build(BuildContext context) {
     Size s = MediaQuery.of(context).size;
@@ -39,11 +41,41 @@ class _ContactAddPageState extends State<ContactAddPage> {
                 allroutes.homepage,
               );
               setState(() {
+
+                  allGlobalvar.listofFname.map(
+                    (e) => {
+                      e = allGlobalvar.Fname!,
+                      allGlobalvar.listofFname.add(e),
+                    },
+                  );
+
+                  allGlobalvar.listofLname.map(
+                    (e) {
+                      e = allGlobalvar.Lname!;
+                      allGlobalvar.listofLname.add(e);
+                    },
+                  );
+
+                  allGlobalvar.listofPnumber.map(
+                    (e) {
+                      e = allGlobalvar.Pnumber!;
+                      allGlobalvar.listofPnumber.add(e);
+                    },
+                  );
+
+                  // allGlobalvar.listofimage.add(allGlobalvar.image!);
+                  // allGlobalvar.listofFname.add(allGlobalvar.Fname!);
+                  // allGlobalvar.listofLname.add(allGlobalvar.Lname!);
+                  // index++;
+
+
                 if (formkey.currentState!.validate()) {
                   formkey.currentState!.save();
                   ScaffoldMessenger.of(context).showSnackBar(
                     errorsnackBar(
-                        text: "Successfully Add Contact", color: Colors.green),
+                      text: "Successfully Add Contact",
+                      color: Colors.green,
+                    ),
                   );
                 } else {
                   ScaffoldMessenger.of(context).showSnackBar(

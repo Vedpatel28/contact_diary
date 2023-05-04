@@ -18,11 +18,11 @@ class allGlobalvar {
 
   static List<File> listofimage = [];
 
-  static List<String> listofFname = [];
+  static List<String> listofFname = ["ved",];
 
-  static List<String> listofLname = [];
+  static List<String> listofLname = ["patel",];
 
-  static List<int> listofPnumber = [];
+  static List<int> listofPnumber = [9983829830,];
 
   static List<String> listofEmail = [];
 }

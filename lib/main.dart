@@ -1,5 +1,6 @@
 import 'package:contact_diary/utils/image_utils.dart';
 import 'package:contact_diary/utils/utils_routes_page.dart';
+import 'package:contact_diary/views/modals/Global_varibles.dart';
 import 'package:contact_diary/views/screen/contact_add_page.dart';
 import 'package:contact_diary/views/screen/contact_detail_page.dart';
 import 'package:contact_diary/views/screen/contact_edit_page.dart';
@@ -32,7 +33,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   bool viewchange = true;
-  int n = 10;
+  int n = 1;
   bool themechange = false;
 
   @override
@@ -74,7 +75,8 @@ class _MyAppState extends State<MyApp> {
         allroutes.condetailpage: (context) => const ContactDetailPage(),
         allroutes.homepage: (context) => Scaffold(
               appBar: AppBar(
-                title: const Text("Contacts",
+                title: const Text(
+                  "Contacts",
                   style: TextStyle(
                     fontWeight: FontWeight.w700,
                     fontSize: 20,
@@ -115,13 +117,19 @@ class _MyAppState extends State<MyApp> {
                           child: ListTile(
                             leading: CircleAvatar(
                               radius: 50,
-                              foregroundImage: NetworkImage(imagenet[index % imagenet.length]),
+                              foregroundImage: NetworkImage(
+                                  imagenet[index % imagenet.length]),
                             ),
                             onTap: () {
-                              Navigator.of(context).pushNamed(allroutes.condetailpage);
+                              Navigator.of(context)
+                                  .pushNamed(allroutes.condetailpage);
                             },
-                            title: Text("Index ${index + 1}"),
-                            subtitle: const Text("mobile No."),
+                            title: Text(
+                              "${allGlobalvar.listofFname[allGlobalvar.listofFname.length - 1]} ${allGlobalvar.listofLname[allGlobalvar.listofLname.length - 1]}",
+                            ),
+                            subtitle: Text(
+                              "${allGlobalvar.listofPnumber[allGlobalvar.listofPnumber.length - 1]}",
+                            ),
                             trailing: IconButton(
                               onPressed: () {},
                               icon: const Icon(
@@ -171,8 +179,19 @@ class _MyAppState extends State<MyApp> {
                             Expanded(
                               flex: 1,
                               child: Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.primaries[index % 18].shade500,
+                                // decoration: BoxDecoration(
+                                //   // color: Colors.primaries[index % 18].shade500,
+                                //   color: Colors.transparent.withOpacity(0.1),
+                                // ),
+                                alignment: Alignment.center,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    const Spacer(),
+                                    Text("${allGlobalvar.listofFname[allGlobalvar.listofFname.length - 1]} ${allGlobalvar.listofLname[allGlobalvar.listofLname.length - 1]}\n${allGlobalvar.listofPnumber[allGlobalvar.listofPnumber.length - 1]}",),
+                                    const Spacer(),
+                                  ],
                                 ),
                               ),
                             ),
@@ -183,6 +202,7 @@ class _MyAppState extends State<MyApp> {
               floatingActionButton: FloatingActionButton(
                 onPressed: () {
                   setState(() {
+                    n++;
                     Navigator.of(context).pushNamed(allroutes.conaddpage);
                   });
                 },
