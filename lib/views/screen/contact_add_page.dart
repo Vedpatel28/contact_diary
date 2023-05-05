@@ -41,33 +41,36 @@ class _ContactAddPageState extends State<ContactAddPage> {
                 allroutes.homepage,
               );
               setState(() {
+                allGlobalvar.listofimage.add(allGlobalvar.image!);
+                allGlobalvar.listofFname.add(allGlobalvar.Fname!);
+                allGlobalvar.listofLname.add(allGlobalvar.Lname!);
+                allGlobalvar.listofPnumber.add(allGlobalvar.Pnumber!);
 
-                  allGlobalvar.listofFname.map(
-                    (e) => {
-                      e = allGlobalvar.Fname!,
-                      allGlobalvar.listofFname.add(e),
-                    },
-                  );
+                // allGlobalvar.listofFname.map(
+                //   (e) => {
+                //     e = allGlobalvar.Fname!,
+                //     allGlobalvar.listofFname.add(e),
+                //   },
+                // );
+                //
+                // allGlobalvar.listofLname.map(
+                //   (e) {
+                //     e = allGlobalvar.Lname!;
+                //     allGlobalvar.listofLname.add(e);
+                //   },
+                // );
+                //
+                // allGlobalvar.listofPnumber.map(
+                //   (e) {
+                //     e = allGlobalvar.Pnumber!;
+                //     allGlobalvar.listofPnumber.add(e);
+                //   },
+                // );
 
-                  allGlobalvar.listofLname.map(
-                    (e) {
-                      e = allGlobalvar.Lname!;
-                      allGlobalvar.listofLname.add(e);
-                    },
-                  );
-
-                  allGlobalvar.listofPnumber.map(
-                    (e) {
-                      e = allGlobalvar.Pnumber!;
-                      allGlobalvar.listofPnumber.add(e);
-                    },
-                  );
-
-                  // allGlobalvar.listofimage.add(allGlobalvar.image!);
-                  // allGlobalvar.listofFname.add(allGlobalvar.Fname!);
-                  // allGlobalvar.listofLname.add(allGlobalvar.Lname!);
-                  // index++;
-
+                // allGlobalvar.listofimage.add(allGlobalvar.image!);
+                // allGlobalvar.listofFname.add(allGlobalvar.Fname!);
+                // allGlobalvar.listofLname.add(allGlobalvar.Lname!);
+                // index++;
 
                 if (formkey.currentState!.validate()) {
                   formkey.currentState!.save();

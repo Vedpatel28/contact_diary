@@ -112,7 +112,7 @@ class _MyAppState extends State<MyApp> {
                   ? ListView(
                       padding: EdgeInsets.zero,
                       children: List.generate(
-                        n,
+                        allGlobalvar.listofFname.length,
                         (index) => Scrollbar(
                           child: ListTile(
                             leading: CircleAvatar(
@@ -125,10 +125,10 @@ class _MyAppState extends State<MyApp> {
                                   .pushNamed(allroutes.condetailpage);
                             },
                             title: Text(
-                              "${allGlobalvar.listofFname[allGlobalvar.listofFname.length - 1]} ${allGlobalvar.listofLname[allGlobalvar.listofLname.length - 1]}",
+                              "${allGlobalvar.listofFname[index]} ${allGlobalvar.listofLname[index]}",
                             ),
                             subtitle: Text(
-                              "${allGlobalvar.listofPnumber[allGlobalvar.listofPnumber.length - 1]}",
+                              "${allGlobalvar.listofPnumber[index]}",
                             ),
                             trailing: IconButton(
                               onPressed: () {},
@@ -189,7 +189,9 @@ class _MyAppState extends State<MyApp> {
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     const Spacer(),
-                                    Text("${allGlobalvar.listofFname[allGlobalvar.listofFname.length - 1]} ${allGlobalvar.listofLname[allGlobalvar.listofLname.length - 1]}\n${allGlobalvar.listofPnumber[allGlobalvar.listofPnumber.length - 1]}",),
+                                    Text(
+                                      "${allGlobalvar.listofFname[allGlobalvar.listofFname.length - 1]} ${allGlobalvar.listofLname[allGlobalvar.listofLname.length - 1]}\n${allGlobalvar.listofPnumber[allGlobalvar.listofPnumber.length - 1]}",
+                                    ),
                                     const Spacer(),
                                   ],
                                 ),
@@ -203,7 +205,9 @@ class _MyAppState extends State<MyApp> {
                 onPressed: () {
                   setState(() {
                     n++;
-                    Navigator.of(context).pushNamed(allroutes.conaddpage);
+                    Navigator.of(context)
+                        .pushNamed(allroutes.conaddpage)
+                        .then((value) => setState(() {}));
                   });
                 },
                 child: const Icon(Icons.add),

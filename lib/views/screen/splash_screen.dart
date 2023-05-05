@@ -11,7 +11,6 @@ class splasescreen extends StatefulWidget {
 }
 
 class _splasescreenState extends State<splasescreen> {
-
   double scal = 1;
   double trax = 1;
   double tray = 1;
@@ -19,10 +18,12 @@ class _splasescreenState extends State<splasescreen> {
   FlutterLogoStyle aniestyle = FlutterLogoStyle.markOnly;
 
   void changeScreen() {
-    Timer.periodic(const Duration(milliseconds: 100), (timer) {
+    Timer.periodic(const Duration(seconds: 3), (timer) {
       setState(() {
         aniestyle = FlutterLogoStyle.horizontal;
       });
+      Navigator.of(context).pushReplacementNamed(allroutes.homepage);
+      timer.cancel();
     });
   }
 
@@ -34,10 +35,6 @@ class _splasescreenState extends State<splasescreen> {
 
   @override
   Widget build(BuildContext context) {
-    Timer.periodic(const Duration(seconds: 3), (timer) {
-      Navigator.of(context).pushReplacementNamed(allroutes.homepage);
-      timer.cancel();
-    });
     return Scaffold(
       body: Center(
         child: Stack(
@@ -84,7 +81,7 @@ class _splasescreenState extends State<splasescreen> {
                           });
                         },
                         child: Transform.translate(
-                          offset: Offset(trax,tray),
+                          offset: Offset(trax, tray),
                           child: Transform.scale(
                             scale: scal,
                             child: Container(
@@ -93,7 +90,8 @@ class _splasescreenState extends State<splasescreen> {
                               decoration: const BoxDecoration(
                                 shape: BoxShape.circle,
                                 image: DecorationImage(
-                                  image: NetworkImage("https://media2.giphy.com/media/Hg8sQkUKJcUqA/200w.gif?cid=6c09b9526fztovnnr2swbxoykldl8vrvxv86zj1q91hcju8a&ep=v1_gifs_search&rid=200w.gif&ct=g"),
+                                  image: NetworkImage(
+                                      "https://media2.giphy.com/media/Hg8sQkUKJcUqA/200w.gif?cid=6c09b9526fztovnnr2swbxoykldl8vrvxv86zj1q91hcju8a&ep=v1_gifs_search&rid=200w.gif&ct=g"),
                                 ),
                               ),
                             ),

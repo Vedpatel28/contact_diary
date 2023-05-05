@@ -12,17 +12,21 @@ class allGlobalvar {
   static List<int>? Pnumberlist;
   static int? Pnumber;
 
-  // static String? Email;
+  static List listofFname = [Fname];
 
-  // List var
+  static List<String> listofLname = [""];
+
+  static List<int> listofPnumber = [12];
+
+  static List<String> listofEmail = [];
 
   static List<File> listofimage = [];
 
-  static List<String> listofFname = ["ved",];
+  // static String? Email;
+}
 
-  static List<String> listofLname = ["patel",];
+class allcontectstor {
+  // List var
 
-  static List<int> listofPnumber = [9983829830,];
-
-  static List<String> listofEmail = [];
+  static List<allGlobalvar> listofFname = [];
 }
