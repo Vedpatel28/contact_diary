@@ -4,6 +4,8 @@ import 'package:contact_diary/views/modals/Global_varibles.dart';
 import 'package:contact_diary/views/screen/contact_add_page.dart';
 import 'package:contact_diary/views/screen/contact_detail_page.dart';
 import 'package:contact_diary/views/screen/contact_edit_page.dart';
+import 'package:device_preview/device_preview.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'views/screen/splash_screen.dart';
@@ -20,8 +22,12 @@ void main() {
   SystemChrome.setSystemUIOverlayStyle(
     SystemUiOverlayStyle.dark,
   );
-
-  runApp(const MyApp());
+  runApp(
+    DevicePreview(
+      enabled: !kReleaseMode,
+      builder: (context) => const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatefulWidget {
@@ -73,7 +79,8 @@ class _MyAppState extends State<MyApp> {
         allroutes.coneditpage: (context) => const ContactEditpage(),
         allroutes.splashscreen: (context) => const splasescreen(),
         allroutes.condetailpage: (context) => const ContactDetailPage(),
-        allroutes.homepage: (context) => Scaffold(
+        allroutes.homepage: (context) =>
+            Scaffold(
               appBar: AppBar(
                 title: const Text(
                   "Contacts",
@@ -108,106 +115,115 @@ class _MyAppState extends State<MyApp> {
                 ],
               ),
               body: viewchange
-                  // ListView
+              // ListView
                   ? ListView(
-                      padding: EdgeInsets.zero,
-                      children: List.generate(
-                        allGlobalvar.listofFname.length,
-                        (index) => Scrollbar(
-                          child: ListTile(
-                            leading: CircleAvatar(
-                              radius: 50,
-                              foregroundImage: NetworkImage(
-                                  imagenet[index % imagenet.length]),
-                            ),
-                            onTap: () {
-                              Navigator.of(context)
-                                  .pushNamed(allroutes.condetailpage);
-                            },
-                            title: Text(
-                              "${allGlobalvar.listofFname[index]} ${allGlobalvar.listofLname[index]}",
-                            ),
-                            subtitle: Text(
-                              "${allGlobalvar.listofPnumber[index]}",
-                            ),
-                            trailing: IconButton(
-                              onPressed: () {},
-                              icon: const Icon(
-                                Icons.phone,
-                                color: Colors.green,
-                              ),
+                padding: EdgeInsets.zero,
+                children: List.generate(
+                  n,
+                      (index) =>
+                      Scrollbar(
+                        child: ListTile(
+                          leading: CircleAvatar(
+                            radius: 50,
+                            foregroundImage: NetworkImage(
+                                imagenet[index % imagenet.length]),
+                          ),
+                          onTap: () {
+                            Navigator.of(context)
+                                .pushNamed(allroutes.condetailpage);
+                          },
+                          title: Text(
+                            "${allGlobalvar.listofFname[allGlobalvar.listofFname
+                                .length - 1]} ${allGlobalvar
+                                .listofLname[allGlobalvar.listofLname.length -
+                                1]}",
+                          ),
+                          subtitle: Text(
+                            "${allGlobalvar.listofPnumber[allGlobalvar
+                                .listofPnumber.length - 1]}",
+                          ),
+                          trailing: IconButton(
+                            onPressed: () {},
+                            icon: const Icon(
+                              Icons.phone,
+                              color: Colors.green,
                             ),
                           ),
                         ),
                       ),
-                    )
-                  // GridView
+                ),
+              )
+              // GridView
                   : Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: GridView.builder(
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisSpacing: 5,
-                          mainAxisSpacing: 5,
-                          childAspectRatio: 2 / 3,
-                          crossAxisCount: 3,
-                        ),
-                        itemCount: n,
-                        itemBuilder: (context, index) => Column(
-                          children: [
-                            Expanded(
-                              flex: 3,
-                              child: GestureDetector(
-                                onTap: () {
-                                  Navigator.of(context)
-                                      .pushNamed(allroutes.condetailpage);
-                                },
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color:
-                                        Colors.primaries[index % 18].shade100,
-                                    image: DecorationImage(
-                                      image: NetworkImage(
-                                        imagenet[index % imagenet.length],
-                                      ),
-                                      fit: BoxFit.cover,
+                padding: const EdgeInsets.all(8.0),
+                child: GridView.builder(
+                  gridDelegate:
+                  const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisSpacing: 5,
+                    mainAxisSpacing: 5,
+                    childAspectRatio: 2 / 3,
+                    crossAxisCount: 3,
+                  ),
+                  itemCount: n,
+                  itemBuilder: (context, index) =>
+                      Column(
+                        children: [
+                          Expanded(
+                            flex: 3,
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.of(context)
+                                    .pushNamed(allroutes.condetailpage);
+                              },
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color:
+                                  Colors.primaries[index % 18].shade100,
+                                  image: DecorationImage(
+                                    image: NetworkImage(
+                                      imagenet[index % imagenet.length],
                                     ),
+                                    fit: BoxFit.cover,
                                   ),
                                 ),
                               ),
                             ),
-                            Expanded(
-                              flex: 1,
-                              child: Container(
-                                // decoration: BoxDecoration(
-                                //   // color: Colors.primaries[index % 18].shade500,
-                                //   color: Colors.transparent.withOpacity(0.1),
-                                // ),
-                                alignment: Alignment.center,
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    const Spacer(),
-                                    Text(
-                                      "${allGlobalvar.listofFname[allGlobalvar.listofFname.length - 1]} ${allGlobalvar.listofLname[allGlobalvar.listofLname.length - 1]}\n${allGlobalvar.listofPnumber[allGlobalvar.listofPnumber.length - 1]}",
-                                    ),
-                                    const Spacer(),
-                                  ],
-                                ),
+                          ),
+                          Expanded(
+                            flex: 1,
+                            child: Container(
+                              // decoration: BoxDecoration(
+                              //   // color: Colors.primaries[index % 18].shade500,
+                              //   color: Colors.transparent.withOpacity(0.1),
+                              // ),
+                              alignment: Alignment.center,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  const Spacer(),
+                                  Text(
+                                    "${allGlobalvar.listofFname[allGlobalvar
+                                        .listofFname.length - 1]} ${allGlobalvar
+                                        .listofLname[allGlobalvar.listofLname
+                                        .length - 1]}\n${allGlobalvar
+                                        .listofPnumber[allGlobalvar
+                                        .listofPnumber.length - 1]}",
+                                  ),
+                                  const Spacer(),
+                                ],
                               ),
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
-                    ),
+                ),
+              ),
               floatingActionButton: FloatingActionButton(
                 onPressed: () {
                   setState(() {
                     n++;
-                    Navigator.of(context)
-                        .pushNamed(allroutes.conaddpage)
-                        .then((value) => setState(() {}));
+                    Navigator.of(context).pushNamed(allroutes.conaddpage);
                   });
                 },
                 child: const Icon(Icons.add),

@@ -33,12 +33,12 @@ class _ContactDetailPageState extends State<ContactDetailPage> {
               crossAxisAlignment: CrossAxisAlignment.end,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(width: s.width * 0.32, height: s.height * 0.2),
+                SizedBox(width: s.width * 0.2, height: s.height * 0.2),
                 CircleAvatar(
                   radius: 60,
                   foregroundImage: FileImage(allGlobalvar.image!),
                 ),
-                SizedBox(width: s.width * 0.1),
+                // SizedBox(width: s.width * 0.1),
                 IconButton(
                   onPressed: () {
                     Navigator.of(context).pop();
