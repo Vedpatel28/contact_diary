@@ -4,6 +4,7 @@ import 'package:contact_diary/utils/Back_Button.dart';
 import 'package:contact_diary/utils/utils_routes_page.dart';
 import 'package:contact_diary/views/component/snackbar_com.dart';
 import 'package:contact_diary/views/modals/Global_varibles.dart';
+import 'package:contact_diary/views/modals/modals.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -40,53 +41,27 @@ class _ContactAddPageState extends State<ContactAddPage> {
               Navigator.of(context).pushNamed(
                 allroutes.homepage,
               );
-              setState(() {
-                allGlobalvar.listofimage.add(allGlobalvar.image!);
-                allGlobalvar.listofFname.add(allGlobalvar.Fname!);
-                allGlobalvar.listofLname.add(allGlobalvar.Lname!);
-                allGlobalvar.listofPnumber.add(allGlobalvar.Pnumber!);
+              contacts(
+                firstname: allGlobalvar.Fname!,
+                lastname: allGlobalvar.Lname!,
+                Contact: allGlobalvar.Pnumber!,
+                email: allGlobalvar.Email!,
+              );
 
-                // allGlobalvar.listofFname.map(
-                //   (e) => {
-                //     e = allGlobalvar.Fname!,
-                //     allGlobalvar.listofFname.add(e),
-                //   },
-                // );
-                //
-                // allGlobalvar.listofLname.map(
-                //   (e) {
-                //     e = allGlobalvar.Lname!;
-                //     allGlobalvar.listofLname.add(e);
-                //   },
-                // );
-                //
-                // allGlobalvar.listofPnumber.map(
-                //   (e) {
-                //     e = allGlobalvar.Pnumber!;
-                //     allGlobalvar.listofPnumber.add(e);
-                //   },
-                // );
-
-                // allGlobalvar.listofimage.add(allGlobalvar.image!);
-                // allGlobalvar.listofFname.add(allGlobalvar.Fname!);
-                // allGlobalvar.listofLname.add(allGlobalvar.Lname!);
-                // index++;
-
-                if (formkey.currentState!.validate()) {
-                  formkey.currentState!.save();
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    errorsnackBar(
-                      text: "Successfully Add Contact",
-                      color: Colors.green,
-                    ),
-                  );
-                } else {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    errorsnackBar(
-                        text: "Sum thing Error !!", color: Colors.redAccent),
-                  );
-                }
-              });
+              if (formkey.currentState!.validate()) {
+                formkey.currentState!.save();
+                ScaffoldMessenger.of(context).showSnackBar(
+                  errorsnackBar(
+                    text: "Successfully Add Contact",
+                    color: Colors.green,
+                  ),
+                );
+              } else {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  errorsnackBar(text: "Sum thing Error !!", color: Colors.redAccent),
+                );
+              }
+              setState(() {});
             },
             child: const Icon(
               Icons.check_rounded,
@@ -122,9 +97,7 @@ class _ContactAddPageState extends State<ContactAddPage> {
                         radius: s.height * 0.07,
                         foregroundColor: Colors.grey,
                         backgroundColor: Colors.grey,
-                        foregroundImage: (allGlobalvar.image != null)
-                            ? FileImage(allGlobalvar.image!)
-                            : null,
+                        foregroundImage: (allGlobalvar.image != null) ? FileImage(allGlobalvar.image!) : null,
                         child: const Text(
                           "ADD",
                         ),
@@ -145,28 +118,24 @@ class _ContactAddPageState extends State<ContactAddPage> {
                               builder: (context) => AlertDialog(
                                 alignment: Alignment.center,
                                 shadowColor: Colors.black,
-                                shape: UnderlineInputBorder(
-                                    borderRadius: BorderRadius.circular(20)),
+                                shape: UnderlineInputBorder(borderRadius: BorderRadius.circular(20)),
                                 title: const Text(
                                   "Select For Add Image",
                                 ),
-                                icon: const Icon(
-                                    Icons.add_photo_alternate_outlined),
+                                icon: const Icon(Icons.add_photo_alternate_outlined),
                                 elevation: 4,
                                 buttonPadding: const EdgeInsets.all(12),
                                 content: Container(
                                   height: s.height * 0.1,
                                   alignment: Alignment.center,
-                                  child: const Text(
-                                      "Click Camera 📷 Button For Add Live Photo.\n"
+                                  child: const Text("Click Camera 📷 Button For Add Live Photo.\n"
                                       "Click Gallery 🌌 Button For Add all ready Clicked Photo.\n"),
                                 ),
                                 actions: [
                                   ElevatedButton.icon(
                                     onPressed: () async {
                                       Navigator.of(context).pop();
-                                      XFile? img = await imagepic.pickImage(
-                                          source: ImageSource.camera);
+                                      XFile? img = await imagepic.pickImage(source: ImageSource.camera);
                                       if (img != null) {
                                         setState(() {
                                           allGlobalvar.image = File(img.path);
@@ -179,8 +148,7 @@ class _ContactAddPageState extends State<ContactAddPage> {
                                   ElevatedButton.icon(
                                     onPressed: () async {
                                       Navigator.of(context).pop();
-                                      XFile? img = await imagepic.pickImage(
-                                          source: ImageSource.gallery);
+                                      XFile? img = await imagepic.pickImage(source: ImageSource.gallery);
                                       if (img != null) {
                                         setState(() {
                                           allGlobalvar.image = File(img.path);
@@ -210,9 +178,6 @@ class _ContactAddPageState extends State<ContactAddPage> {
                 ),
                 TextFormField(
                   textInputAction: TextInputAction.next,
-
-                  // initialValue: allGlobalvar.Fname,
-
                   initialValue: allGlobalvar.Fname,
                   validator: (value) {
                     if (value!.isEmpty) {
@@ -269,9 +234,7 @@ class _ContactAddPageState extends State<ContactAddPage> {
                   maxLength: 10,
                   textInputAction: TextInputAction.next,
                   keyboardType: TextInputType.number,
-                  initialValue: (allGlobalvar.Pnumber == null)
-                      ? null
-                      : allGlobalvar.Pnumber.toString(),
+                  initialValue: (allGlobalvar.Pnumber == null) ? null : allGlobalvar.Pnumber.toString(),
                   validator: (value) {
                     if (value!.isEmpty) {
                       return "Enter Contect Number";
