@@ -38,16 +38,17 @@ class _ContactAddPageState extends State<ContactAddPage> {
         actions: [
           GestureDetector(
             onTap: () {
-              Navigator.of(context).pushNamed(
-                allroutes.homepage,
-              );
-              contacts(
-                firstname: allGlobalvar.Fname!,
-                lastname: allGlobalvar.Lname!,
-                Contact: allGlobalvar.Pnumber!,
-                email: allGlobalvar.Email!,
-              );
+              Navigator.of(context).pop();
 
+              allGlobalvar.allContact.add(
+                contacts(
+                  firstname: allGlobalvar.Fname!,
+                  lastname: allGlobalvar.Lname!,
+                  Contact: allGlobalvar.Pnumber!,
+                  email: allGlobalvar.Email!,
+                  image: allGlobalvar.image!,
+                ),
+              );
               if (formkey.currentState!.validate()) {
                 formkey.currentState!.save();
                 ScaffoldMessenger.of(context).showSnackBar(
@@ -61,17 +62,11 @@ class _ContactAddPageState extends State<ContactAddPage> {
                   errorsnackBar(text: "Sum thing Error !!", color: Colors.redAccent),
                 );
               }
-              setState(() {});
             },
             child: const Icon(
               Icons.check_rounded,
-              size: 30,
+              size: 40,
             ),
-          ),
-          const Icon(
-            Icons.check_rounded,
-            size: 10,
-            color: Colors.transparent,
           ),
         ],
       ),

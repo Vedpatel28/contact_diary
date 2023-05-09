@@ -13,6 +13,7 @@ class ContactDetailPage extends StatefulWidget {
 class _ContactDetailPageState extends State<ContactDetailPage> {
   @override
   Widget build(BuildContext context) {
+    int index = ModalRoute.of(context)!.settings.arguments as int;
     Size s = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
@@ -61,7 +62,7 @@ class _ContactDetailPageState extends State<ContactDetailPage> {
             ),
             SizedBox(height: s.height * 0.05),
             Text(
-              "${allGlobalvar.Fname} ${allGlobalvar.Lname}",
+              "${allGlobalvar.allContact[index].firstname} ${allGlobalvar.allContact[index].lastname}",
               style: TextStyle(
                 wordSpacing: 2,
                 fontSize: s.height * 0.04,
@@ -72,7 +73,7 @@ class _ContactDetailPageState extends State<ContactDetailPage> {
               children: [
                 SizedBox(width: s.width * 0.05),
                 Text(
-                  "+91 ${allGlobalvar.Pnumber}",
+                  "+91 ${allGlobalvar.allContact[index].Contact}",
                   style: TextStyle(
                     fontSize: s.height * 0.028,
                   ),

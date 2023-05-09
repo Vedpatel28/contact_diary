@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:contact_diary/views/modals/modals.dart';
 
 class allGlobalvar {
@@ -8,4 +7,6 @@ class allGlobalvar {
   static String? Lname;
   static String? Email;
   static int? Pnumber;
+
+  static List<contacts> allContact = [];
 }

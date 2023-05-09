@@ -12,8 +12,6 @@ class contacts {
     required this.lastname,
     required this.Contact,
     required this.email,
-    this.image,
+    required this.image,
   });
-
-  static List<contacts> allContact = [];
 }

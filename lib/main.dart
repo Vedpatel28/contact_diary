@@ -24,10 +24,7 @@ void main() {
     SystemUiOverlayStyle.dark,
   );
   runApp(
-    DevicePreview(
-      enabled: !kReleaseMode,
-      builder: (context) => const MyApp(),
-    ),
+    const MyApp(),
   );
 }
 
@@ -46,6 +43,21 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+
+      // theme: ThemeData(
+      //   useMaterial3: true,
+      //   colorSchemeSeed: Colors.blue,
+      //   appBarTheme: const AppBarTheme(
+      //     backgroundColor: Colors.blue,
+      //     foregroundColor: Colors.white,
+      //   ),
+      // ),
+      // //Dark Theme
+      // darkTheme: ThemeData(
+      //   useMaterial3: true,
+      //   brightness: Brightness.dark,
+      // ),
+
       theme: ThemeData(
         useMaterial3: true,
         appBarTheme: const AppBarTheme(
@@ -82,7 +94,7 @@ class _MyAppState extends State<MyApp> {
         allroutes.homepage: (context) => Scaffold(
               appBar: AppBar(
                 title: const Text(
-                  "Contacts",
+                  "allGlobalvar",
                   style: TextStyle(
                     fontWeight: FontWeight.w700,
                     fontSize: 20,
@@ -114,21 +126,21 @@ class _MyAppState extends State<MyApp> {
                   ? ListView(
                       padding: EdgeInsets.zero,
                       children: List.generate(
-                        contacts.allContact.length,
+                        allGlobalvar.allContact.length,
                         (index) => Scrollbar(
                           child: ListTile(
                             leading: CircleAvatar(
                               radius: 50,
-                              foregroundImage: FileImage(contacts.allContact[index].image!),
+                              foregroundImage: FileImage(allGlobalvar.allContact[index + 1].image!),
                             ),
                             onTap: () {
                               Navigator.of(context).pushNamed(allroutes.condetailpage);
                             },
                             title: Text(
-                              "${contacts.allContact[index].firstname} ${contacts.allContact[index].lastname}",
+                              "${allGlobalvar.allContact[index].firstname} ${allGlobalvar.allContact[index].lastname}",
                             ),
                             subtitle: Text(
-                              "${contacts.allContact[index].Contact}",
+                              "${allGlobalvar.allContact[index].Contact}",
                             ),
                             trailing: IconButton(
                               onPressed: () {},
@@ -151,20 +163,20 @@ class _MyAppState extends State<MyApp> {
                           childAspectRatio: 2 / 3,
                           crossAxisCount: 3,
                         ),
-                        itemCount: contacts.allContact.length,
+                        itemCount: allGlobalvar.allContact.length,
                         itemBuilder: (context, index) => Column(
                           children: [
                             Expanded(
                               flex: 3,
                               child: GestureDetector(
                                 onTap: () {
-                                  Navigator.of(context).pushNamed(allroutes.condetailpage);
+                                  Navigator.of(context).pushNamed(allroutes.condetailpage, arguments: index);
                                 },
                                 child: Container(
                                   decoration: BoxDecoration(
                                     color: Colors.primaries[index % 18].shade100,
                                     image: DecorationImage(
-                                      image: FileImage(contacts.allContact[index].image!),
+                                      image: FileImage(allGlobalvar.allContact[index].image!),
                                       fit: BoxFit.cover,
                                     ),
                                   ),
@@ -181,7 +193,7 @@ class _MyAppState extends State<MyApp> {
                                   children: [
                                     const Spacer(),
                                     Text(
-                                      "${contacts.allContact[index].firstname}",
+                                      "${allGlobalvar.allContact[index].firstname}",
                                     ),
                                     const Spacer(),
                                   ],
@@ -193,9 +205,8 @@ class _MyAppState extends State<MyApp> {
                       ),
                     ),
               floatingActionButton: FloatingActionButton(
-                onPressed: () {
-                  Navigator.of(context).pushNamed(allroutes.conaddpage);
-                  contacts.allContact.length++;
+                onPressed: () async {
+                  await Navigator.of(context).pushNamed(allroutes.conaddpage);
                   setState(() {});
                 },
                 child: const Icon(Icons.add),
