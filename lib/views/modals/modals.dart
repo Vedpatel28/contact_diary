@@ -1,17 +1,16 @@
 import 'dart:io';
 
 class contacts {
-  String? firstname;
-  String? lastname;
-  int? Contact;
-  String? email;
-  File? image;
+  late String firstname;
+  late String lastname;
+  late int Contact;
+  late String email;
+  late File? image;
 
   contacts({
     required this.firstname,
     required this.lastname,
     required this.Contact,
-    required this.email,
-    required this.image,
+    this.image,
   });
 }

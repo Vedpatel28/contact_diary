@@ -20,8 +20,6 @@ class _ContactAddPageState extends State<ContactAddPage> {
 
   ImagePicker imagepic = ImagePicker();
 
-  int index = 0;
-
   @override
   Widget build(BuildContext context) {
     Size s = MediaQuery.of(context).size;
@@ -38,19 +36,16 @@ class _ContactAddPageState extends State<ContactAddPage> {
         actions: [
           GestureDetector(
             onTap: () {
-              Navigator.of(context).pop();
-
-              allGlobalvar.allContact.add(
-                contacts(
-                  firstname: allGlobalvar.Fname!,
-                  lastname: allGlobalvar.Lname!,
-                  Contact: allGlobalvar.Pnumber!,
-                  email: allGlobalvar.Email!,
-                  image: allGlobalvar.image!,
-                ),
-              );
               if (formkey.currentState!.validate()) {
                 formkey.currentState!.save();
+                allGlobalvar.allContact.add(
+                  contacts(
+                    firstname: allGlobalvar.Fname!,
+                    lastname: allGlobalvar.Lname!,
+                    Contact: allGlobalvar.Pnumber!,
+                    image: allGlobalvar.image!,
+                  ),
+                );
                 ScaffoldMessenger.of(context).showSnackBar(
                   errorsnackBar(
                     text: "Successfully Add Contact",
@@ -62,6 +57,7 @@ class _ContactAddPageState extends State<ContactAddPage> {
                   errorsnackBar(text: "Sum thing Error !!", color: Colors.redAccent),
                 );
               }
+              Navigator.of(context).pop();
             },
             child: const Icon(
               Icons.check_rounded,
@@ -72,10 +68,10 @@ class _ContactAddPageState extends State<ContactAddPage> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
-        child: Form(
-          key: formkey,
-          autovalidateMode: AutovalidateMode.onUserInteraction,
-          child: SingleChildScrollView(
+        child: SingleChildScrollView(
+          child: Form(
+            key: formkey,
+            autovalidateMode: AutovalidateMode.onUserInteraction,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -259,7 +255,7 @@ class _ContactAddPageState extends State<ContactAddPage> {
                 TextFormField(
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
-                    hintText: "",
+                    hintText: "Email",
                     errorBorder: OutlineInputBorder(),
                   ),
                 ),

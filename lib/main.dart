@@ -43,21 +43,6 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-
-      // theme: ThemeData(
-      //   useMaterial3: true,
-      //   colorSchemeSeed: Colors.blue,
-      //   appBarTheme: const AppBarTheme(
-      //     backgroundColor: Colors.blue,
-      //     foregroundColor: Colors.white,
-      //   ),
-      // ),
-      // //Dark Theme
-      // darkTheme: ThemeData(
-      //   useMaterial3: true,
-      //   brightness: Brightness.dark,
-      // ),
-
       theme: ThemeData(
         useMaterial3: true,
         appBarTheme: const AppBarTheme(
@@ -94,7 +79,7 @@ class _MyAppState extends State<MyApp> {
         allroutes.homepage: (context) => Scaffold(
               appBar: AppBar(
                 title: const Text(
-                  "allGlobalvar",
+                  "Contact",
                   style: TextStyle(
                     fontWeight: FontWeight.w700,
                     fontSize: 20,
@@ -123,31 +108,29 @@ class _MyAppState extends State<MyApp> {
               ),
               body: viewchange
                   // ListView
-                  ? ListView(
+                  ? ListView.builder(
                       padding: EdgeInsets.zero,
-                      children: List.generate(
-                        allGlobalvar.allContact.length,
-                        (index) => Scrollbar(
-                          child: ListTile(
-                            leading: CircleAvatar(
-                              radius: 50,
-                              foregroundImage: FileImage(allGlobalvar.allContact[index + 1].image!),
-                            ),
-                            onTap: () {
-                              Navigator.of(context).pushNamed(allroutes.condetailpage);
-                            },
-                            title: Text(
-                              "${allGlobalvar.allContact[index].firstname} ${allGlobalvar.allContact[index].lastname}",
-                            ),
-                            subtitle: Text(
-                              "${allGlobalvar.allContact[index].Contact}",
-                            ),
-                            trailing: IconButton(
-                              onPressed: () {},
-                              icon: const Icon(
-                                Icons.phone,
-                                color: Colors.green,
-                              ),
+                      itemCount: allGlobalvar.allContact.length,
+                      itemBuilder: (context, index) => Scrollbar(
+                        child: ListTile(
+                          leading: CircleAvatar(
+                            radius: 50,
+                            foregroundImage: FileImage(allGlobalvar.allContact[index].image!),
+                          ),
+                          onTap: () {
+                            Navigator.of(context).pushNamed(allroutes.condetailpage, arguments: index);
+                          },
+                          title: Text(
+                            "${allGlobalvar.allContact[index].firstname} ${allGlobalvar.allContact[index].lastname}",
+                          ),
+                          subtitle: Text(
+                            "${allGlobalvar.allContact[index].Contact}",
+                          ),
+                          trailing: IconButton(
+                            onPressed: () {},
+                            icon: const Icon(
+                              Icons.phone,
+                              color: Colors.green,
                             ),
                           ),
                         ),

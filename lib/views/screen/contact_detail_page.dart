@@ -1,6 +1,7 @@
 import 'package:contact_diary/utils/Back_Button.dart';
 import 'package:contact_diary/utils/utils_routes_page.dart';
 import 'package:contact_diary/views/modals/Global_varibles.dart';
+import 'package:contact_diary/views/modals/modals.dart';
 import 'package:flutter/material.dart';
 
 class ContactDetailPage extends StatefulWidget {
@@ -37,7 +38,7 @@ class _ContactDetailPageState extends State<ContactDetailPage> {
                 SizedBox(width: s.width * 0.2, height: s.height * 0.2),
                 CircleAvatar(
                   radius: 60,
-                  foregroundImage: FileImage(allGlobalvar.image!),
+                  foregroundImage: FileImage(allGlobalvar.allContact[index].image!),
                 ),
                 // SizedBox(width: s.width * 0.1),
                 IconButton(
