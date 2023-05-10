@@ -8,7 +8,7 @@ SnackBar errorsnackBar({required String text, required Color color}) {
     shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.vertical(
         bottom: Radius.circular(5),
-        top: Radius.elliptical(5, 40),
+        top: Radius.elliptical(50, 80),
       ),
     ),
     content: Text(text),

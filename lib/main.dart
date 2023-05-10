@@ -1,12 +1,8 @@
-import 'package:contact_diary/utils/image_utils.dart';
 import 'package:contact_diary/utils/utils_routes_page.dart';
 import 'package:contact_diary/views/modals/Global_varibles.dart';
-import 'package:contact_diary/views/modals/modals.dart';
 import 'package:contact_diary/views/screen/contact_add_page.dart';
 import 'package:contact_diary/views/screen/contact_detail_page.dart';
 import 'package:contact_diary/views/screen/contact_edit_page.dart';
-import 'package:device_preview/device_preview.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'views/screen/splash_screen.dart';
@@ -93,7 +89,9 @@ class _MyAppState extends State<MyApp> {
                       });
                     },
                     icon: Icon(
-                      themechange ? Icons.light_mode_outlined : Icons.dark_mode_outlined,
+                      themechange
+                          ? Icons.light_mode_outlined
+                          : Icons.dark_mode_outlined,
                     ),
                   ),
                   IconButton(
@@ -102,7 +100,9 @@ class _MyAppState extends State<MyApp> {
                         viewchange = !viewchange;
                       });
                     },
-                    icon: viewchange ? const Icon(Icons.grid_view) : const Icon(Icons.list),
+                    icon: viewchange
+                        ? const Icon(Icons.grid_view)
+                        : const Icon(Icons.list),
                   ),
                 ],
               ),
@@ -115,10 +115,13 @@ class _MyAppState extends State<MyApp> {
                         child: ListTile(
                           leading: CircleAvatar(
                             radius: 50,
-                            foregroundImage: FileImage(allGlobalvar.allContact[index].image!),
+                            foregroundImage: FileImage(
+                                allGlobalvar.allContact[index].image!),
                           ),
                           onTap: () {
-                            Navigator.of(context).pushNamed(allroutes.condetailpage, arguments: index);
+                            Navigator.of(context).pushNamed(
+                                allroutes.condetailpage,
+                                arguments: index);
                           },
                           title: Text(
                             "${allGlobalvar.allContact[index].firstname} ${allGlobalvar.allContact[index].lastname}",
@@ -140,7 +143,8 @@ class _MyAppState extends State<MyApp> {
                   : Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: GridView.builder(
-                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisSpacing: 5,
                           mainAxisSpacing: 5,
                           childAspectRatio: 2 / 3,
@@ -153,13 +157,17 @@ class _MyAppState extends State<MyApp> {
                               flex: 3,
                               child: GestureDetector(
                                 onTap: () {
-                                  Navigator.of(context).pushNamed(allroutes.condetailpage, arguments: index);
+                                  Navigator.of(context).pushNamed(
+                                      allroutes.condetailpage,
+                                      arguments: index);
                                 },
                                 child: Container(
                                   decoration: BoxDecoration(
-                                    color: Colors.primaries[index % 18].shade100,
+                                    color:
+                                        Colors.primaries[index % 18].shade100,
                                     image: DecorationImage(
-                                      image: FileImage(allGlobalvar.allContact[index].image!),
+                                      image: FileImage(allGlobalvar
+                                          .allContact[index].image!),
                                       fit: BoxFit.cover,
                                     ),
                                   ),
@@ -170,15 +178,23 @@ class _MyAppState extends State<MyApp> {
                               flex: 1,
                               child: Container(
                                 alignment: Alignment.center,
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                child: Column(
                                   children: [
-                                    const Spacer(),
-                                    Text(
-                                      "${allGlobalvar.allContact[index].firstname}",
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        const Spacer(),
+                                        Text(
+                                          allGlobalvar.allContact[index].firstname,
+                                        ),
+                                        const Spacer(),
+                                      ],
                                     ),
-                                    const Spacer(),
+                                    Text(
+                                      "${allGlobalvar.allContact[index].Contact}",                                    ),
                                   ],
                                 ),
                               ),
@@ -190,7 +206,8 @@ class _MyAppState extends State<MyApp> {
               floatingActionButton: FloatingActionButton(
                 onPressed: () async {
                   await Navigator.of(context).pushNamed(allroutes.conaddpage);
-                  setState(() {});
+                  setState(() {
+                  });
                 },
                 child: const Icon(Icons.add),
               ),

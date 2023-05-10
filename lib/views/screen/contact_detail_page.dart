@@ -1,8 +1,8 @@
 import 'package:contact_diary/utils/Back_Button.dart';
 import 'package:contact_diary/utils/utils_routes_page.dart';
 import 'package:contact_diary/views/modals/Global_varibles.dart';
-import 'package:contact_diary/views/modals/modals.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ContactDetailPage extends StatefulWidget {
   const ContactDetailPage({Key? key}) : super(key: key);
@@ -38,12 +38,16 @@ class _ContactDetailPageState extends State<ContactDetailPage> {
                 SizedBox(width: s.width * 0.2, height: s.height * 0.2),
                 CircleAvatar(
                   radius: 60,
-                  foregroundImage: FileImage(allGlobalvar.allContact[index].image!),
+                  foregroundImage:
+                      FileImage(allGlobalvar.allContact[index].image!),
                 ),
                 // SizedBox(width: s.width * 0.1),
                 IconButton(
                   onPressed: () {
                     Navigator.of(context).pop();
+                    setState(() {
+                      allGlobalvar.allContact.removeAt(index);
+                    });
                   },
                   icon: Icon(
                     Icons.delete,
@@ -91,10 +95,19 @@ class _ContactDetailPageState extends State<ContactDetailPage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                CircleAvatar(
-                  backgroundColor: Colors.green,
-                  radius: s.height * 0.03,
-                  child: const Icon(Icons.phone, color: Colors.white),
+                GestureDetector(
+                  onTap: () {
+                    Uri call = Uri(
+                      scheme: 'tel',
+                      path: allGlobalvar.allContact[index].Contact as String,
+                    );
+                    launchUrl(call);
+                  },
+                  child: CircleAvatar(
+                    backgroundColor: Colors.green,
+                    radius: s.height * 0.03,
+                    child: const Icon(Icons.phone, color: Colors.white),
+                  ),
                 ),
                 CircleAvatar(
                   backgroundColor: Colors.orange,
