@@ -56,7 +56,8 @@ class _ContactDetailPageState extends State<ContactDetailPage> {
                 ),
                 IconButton(
                   onPressed: () {
-                    Navigator.of(context).pushNamed(allroutes.coneditpage);
+                    Navigator.of(context)
+                        .pushNamed(allroutes.coneditpage, arguments: index);
                   },
                   icon: Icon(
                     Icons.edit,
@@ -99,7 +100,7 @@ class _ContactDetailPageState extends State<ContactDetailPage> {
                   onTap: () {
                     Uri call = Uri(
                       scheme: 'tel',
-                      path: allGlobalvar.allContact[index].Contact as String,
+                      path: allGlobalvar.allContact[index].Contact,
                     );
                     launchUrl(call);
                   },
@@ -109,20 +110,43 @@ class _ContactDetailPageState extends State<ContactDetailPage> {
                     child: const Icon(Icons.phone, color: Colors.white),
                   ),
                 ),
-                CircleAvatar(
-                  backgroundColor: Colors.orange,
-                  radius: s.height * 0.03,
-                  child: const Icon(Icons.message, color: Colors.white),
+                GestureDetector(
+                  onTap: () {
+                    Uri sms = Uri(
+                      scheme: 'sms',
+                      path: allGlobalvar.allContact[index].Contact,
+                    );
+                    launchUrl(sms);
+                  },
+                  child: CircleAvatar(
+                    backgroundColor: Colors.orange,
+                    radius: s.height * 0.03,
+                    child: const Icon(Icons.message, color: Colors.white),
+                  ),
                 ),
-                CircleAvatar(
-                  backgroundColor: Colors.blue.shade300,
-                  radius: s.height * 0.03,
-                  child: const Icon(Icons.email_rounded, color: Colors.white),
+                GestureDetector(
+                  onTap: () {
+                    Uri mail = Uri(
+                      scheme: 'mailto',
+                      query:
+                          "subject=Contact us=Dear ${allGlobalvar.allContact[index].firstname}",
+                      path: allGlobalvar.allContact[index].email,
+                    );
+                    launchUrl(mail);
+                  },
+                  child: CircleAvatar(
+                    backgroundColor: Colors.blue.shade300,
+                    radius: s.height * 0.03,
+                    child: const Icon(Icons.email_rounded, color: Colors.white),
+                  ),
                 ),
-                CircleAvatar(
-                  backgroundColor: Colors.orange,
-                  radius: s.height * 0.03,
-                  child: const Icon(Icons.share, color: Colors.white),
+                GestureDetector(
+                  onTap: () {},
+                  child: CircleAvatar(
+                    backgroundColor: Colors.orange,
+                    radius: s.height * 0.03,
+                    child: const Icon(Icons.share, color: Colors.white),
+                  ),
                 ),
               ],
             ),

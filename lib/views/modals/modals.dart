@@ -3,7 +3,7 @@ import 'dart:io';
 class contacts {
   late String firstname;
   late String lastname;
-  late int Contact;
+  late String Contact;
   late String email;
   late File? image;
 
@@ -11,6 +11,7 @@ class contacts {
     required this.firstname,
     required this.lastname,
     required this.Contact,
+    required this.email,
     this.image,
   });
 }

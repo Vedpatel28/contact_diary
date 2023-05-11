@@ -6,7 +6,7 @@ class allGlobalvar {
   static String? Fname;
   static String? Lname;
   static String? Email;
-  static int? Pnumber;
+  static String? Pnumber;
 
   static List<contacts> allContact = [];
 }

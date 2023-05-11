@@ -5,6 +5,7 @@ import 'package:contact_diary/views/screen/contact_detail_page.dart';
 import 'package:contact_diary/views/screen/contact_edit_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'views/screen/splash_screen.dart';
 
 void main() {
@@ -127,10 +128,16 @@ class _MyAppState extends State<MyApp> {
                             "${allGlobalvar.allContact[index].firstname} ${allGlobalvar.allContact[index].lastname}",
                           ),
                           subtitle: Text(
-                            "${allGlobalvar.allContact[index].Contact}",
+                            "+91 ${allGlobalvar.allContact[index].Contact}",
                           ),
                           trailing: IconButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Uri call = Uri(
+                                scheme: 'tel',
+                                path: allGlobalvar.allContact[index].Contact,
+                              );
+                              launchUrl(call);
+                            },
                             icon: const Icon(
                               Icons.phone,
                               color: Colors.green,
@@ -147,14 +154,14 @@ class _MyAppState extends State<MyApp> {
                             const SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisSpacing: 5,
                           mainAxisSpacing: 5,
-                          childAspectRatio: 2 / 3,
-                          crossAxisCount: 3,
+                          childAspectRatio: 2 / 4,
+                          crossAxisCount: 2,
                         ),
                         itemCount: allGlobalvar.allContact.length,
                         itemBuilder: (context, index) => Column(
                           children: [
                             Expanded(
-                              flex: 3,
+                              flex: 5,
                               child: GestureDetector(
                                 onTap: () {
                                   Navigator.of(context).pushNamed(
@@ -175,7 +182,7 @@ class _MyAppState extends State<MyApp> {
                               ),
                             ),
                             Expanded(
-                              flex: 1,
+                              flex: 2,
                               child: Container(
                                 alignment: Alignment.center,
                                 child: Column(
@@ -188,13 +195,15 @@ class _MyAppState extends State<MyApp> {
                                       children: [
                                         const Spacer(),
                                         Text(
-                                          allGlobalvar.allContact[index].firstname,
+                                          allGlobalvar
+                                              .allContact[index].firstname,
                                         ),
                                         const Spacer(),
                                       ],
                                     ),
                                     Text(
-                                      "${allGlobalvar.allContact[index].Contact}",                                    ),
+                                      "+91 ${allGlobalvar.allContact[index].Contact}",
+                                    ),
                                   ],
                                 ),
                               ),
@@ -206,8 +215,7 @@ class _MyAppState extends State<MyApp> {
               floatingActionButton: FloatingActionButton(
                 onPressed: () async {
                   await Navigator.of(context).pushNamed(allroutes.conaddpage);
-                  setState(() {
-                  });
+                  setState(() {});
                 },
                 child: const Icon(Icons.add),
               ),
