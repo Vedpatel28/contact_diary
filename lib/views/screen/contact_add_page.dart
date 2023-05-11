@@ -41,6 +41,7 @@ class _ContactAddPageState extends State<ContactAddPage> {
                     firstname: allGlobalvar.Fname!,
                     lastname: allGlobalvar.Lname!,
                     Contact: allGlobalvar.Pnumber!,
+                    email: allGlobalvar.Email!,
                     image: allGlobalvar.image!,
                   ),
                 );
@@ -244,7 +245,7 @@ class _ContactAddPageState extends State<ContactAddPage> {
                     }
                   },
                   onSaved: (newValue) {
-                    allGlobalvar.Pnumber = int.parse(newValue!);
+                    allGlobalvar.Pnumber = newValue;
                   },
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
@@ -261,6 +262,18 @@ class _ContactAddPageState extends State<ContactAddPage> {
                   ),
                 ),
                 TextFormField(
+                  textInputAction: TextInputAction.next,
+                  initialValue: allGlobalvar.Email,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return "Enter The Email";
+                    } else {
+                      return null;
+                    }
+                  },
+                  onSaved: (newValue) {
+                    allGlobalvar.Email = newValue;
+                  },
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     hintText: "Email",
