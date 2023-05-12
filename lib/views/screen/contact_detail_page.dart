@@ -2,6 +2,7 @@ import 'package:contact_diary/utils/Back_Button.dart';
 import 'package:contact_diary/utils/utils_routes_page.dart';
 import 'package:contact_diary/views/modals/Global_varibles.dart';
 import 'package:flutter/material.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ContactDetailPage extends StatefulWidget {
@@ -38,8 +39,7 @@ class _ContactDetailPageState extends State<ContactDetailPage> {
                 SizedBox(width: s.width * 0.2, height: s.height * 0.2),
                 CircleAvatar(
                   radius: 60,
-                  foregroundImage:
-                      FileImage(allGlobalvar.allContact[index].image!),
+                  foregroundImage: FileImage(allGlobalvar.allContact[index].image!),
                 ),
                 // SizedBox(width: s.width * 0.1),
                 IconButton(
@@ -56,8 +56,7 @@ class _ContactDetailPageState extends State<ContactDetailPage> {
                 ),
                 IconButton(
                   onPressed: () {
-                    Navigator.of(context)
-                        .pushNamed(allroutes.coneditpage, arguments: index);
+                    Navigator.of(context).pushNamed(allroutes.coneditpage, arguments: index);
                   },
                   icon: Icon(
                     Icons.edit,
@@ -128,8 +127,7 @@ class _ContactDetailPageState extends State<ContactDetailPage> {
                   onTap: () {
                     Uri mail = Uri(
                       scheme: 'mailto',
-                      query:
-                          "subject=Contact us=Dear ${allGlobalvar.allContact[index].firstname}",
+                      query: "subject=Contact us=Dear ${allGlobalvar.allContact[index].firstname}",
                       path: allGlobalvar.allContact[index].email,
                     );
                     launchUrl(mail);
@@ -141,7 +139,10 @@ class _ContactDetailPageState extends State<ContactDetailPage> {
                   ),
                 ),
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Share.share(
+                        "${allGlobalvar.allContact[index].firstname} ${allGlobalvar.allContact[index].lastname} \n ${allGlobalvar.allContact[index].Contact}");
+                  },
                   child: CircleAvatar(
                     backgroundColor: Colors.orange,
                     radius: s.height * 0.03,

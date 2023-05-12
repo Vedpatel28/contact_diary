@@ -32,6 +32,7 @@ class _ContactEditpageState extends State<ContactEditpage> {
           GestureDetector(
             onTap: () {
               Navigator.of(context).pop();
+              setState(() {});
             },
             child: const Icon(
               Icons.check_rounded,
@@ -52,9 +53,7 @@ class _ContactEditpageState extends State<ContactEditpage> {
                 Container(
                   height: s.height * 0.2,
                   width: s.width,
-                  decoration: const BoxDecoration(
-                    color: Colors.white,
-                  ),
+                  decoration: const BoxDecoration(),
                   alignment: Alignment.center,
                   child: Stack(
                     alignment: Alignment.bottomRight,
@@ -64,9 +63,7 @@ class _ContactEditpageState extends State<ContactEditpage> {
                         foregroundColor: Colors.grey,
                         backgroundColor: Colors.grey,
                         foregroundImage:
-                            (allGlobalvar.allContact[index].image != null)
-                                ? FileImage(allGlobalvar.allContact[index].image!)
-                                : null,
+                            (allGlobalvar.allContact[index].image != null) ? FileImage(allGlobalvar.allContact[index].image!) : null,
                         child: const Text(
                           "ADD",
                         ),
@@ -87,31 +84,27 @@ class _ContactEditpageState extends State<ContactEditpage> {
                               builder: (context) => AlertDialog(
                                 alignment: Alignment.center,
                                 shadowColor: Colors.black,
-                                shape: UnderlineInputBorder(
-                                    borderRadius: BorderRadius.circular(20)),
+                                shape: UnderlineInputBorder(borderRadius: BorderRadius.circular(20)),
                                 title: const Text(
                                   "Select For Add Image",
                                 ),
-                                icon:
-                                    const Icon(Icons.add_photo_alternate_outlined),
+                                icon: const Icon(Icons.add_photo_alternate_outlined),
                                 elevation: 4,
                                 buttonPadding: const EdgeInsets.all(12),
                                 content: Container(
                                   height: s.height * 0.1,
                                   alignment: Alignment.center,
-                                  child: const Text(
-                                      "Click Camera 📷 Button For Add Live Photo.\n"
+                                  child: const Text("Click Camera 📷 Button For Add Live Photo.\n"
                                       "Click Gallery 🌌 Button For Add all ready Clicked Photo.\n"),
                                 ),
                                 actions: [
                                   ElevatedButton.icon(
                                     onPressed: () async {
                                       Navigator.of(context).pop();
-                                      XFile? img = await imagepic.pickImage(
-                                          source: ImageSource.camera);
+                                      XFile? img = await imagepic.pickImage(source: ImageSource.camera);
                                       if (img != null) {
                                         setState(() {
-                                          allGlobalvar.image = File(img.path);
+                                          allGlobalvar.allContact[index].image = File(img.path);
                                         });
                                       }
                                     },
@@ -121,8 +114,7 @@ class _ContactEditpageState extends State<ContactEditpage> {
                                   ElevatedButton.icon(
                                     onPressed: () async {
                                       Navigator.of(context).pop();
-                                      XFile? img = await imagepic.pickImage(
-                                          source: ImageSource.gallery);
+                                      XFile? img = await imagepic.pickImage(source: ImageSource.gallery);
                                       if (img != null) {
                                         setState(() {
                                           allGlobalvar.image = File(img.path);
@@ -152,8 +144,8 @@ class _ContactEditpageState extends State<ContactEditpage> {
                 ),
                 TextFormField(
                   initialValue: allGlobalvar.allContact[index].firstname,
-                  onSaved: (newValue) {
-                    allGlobalvar.allContact[index].firstname = newValue!;
+                  onChanged: (newValue) {
+                    allGlobalvar.allContact[index].firstname = newValue;
                   },
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
@@ -171,8 +163,8 @@ class _ContactEditpageState extends State<ContactEditpage> {
                 ),
                 TextFormField(
                   initialValue: allGlobalvar.allContact[index].lastname,
-                  onSaved: (newValue) {
-                    allGlobalvar.allContact[index].lastname = newValue!;
+                  onChanged: (newValue) {
+                    allGlobalvar.allContact[index].lastname = newValue;
                   },
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
@@ -190,8 +182,8 @@ class _ContactEditpageState extends State<ContactEditpage> {
                 ),
                 TextFormField(
                   initialValue: allGlobalvar.allContact[index].Contact,
-                  onSaved: (newValue) {
-                    allGlobalvar.allContact[index].Contact = newValue!;
+                  onChanged: (newValue) {
+                    allGlobalvar.allContact[index].Contact = newValue;
                   },
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
@@ -209,8 +201,8 @@ class _ContactEditpageState extends State<ContactEditpage> {
                 ),
                 TextFormField(
                   initialValue: allGlobalvar.allContact[index].email,
-                  onSaved: (newValue) {
-                    allGlobalvar.allContact[index].email = newValue!;
+                  onChanged: (newValue) {
+                    allGlobalvar.allContact[index].email = newValue;
                   },
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
