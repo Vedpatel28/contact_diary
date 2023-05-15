@@ -18,6 +18,6 @@ samples, guidance on mobile development, and a full API reference.
 [splash finel.webm](https://github.com/Vedpatel28/contact_diary/assets/130833918/793649c0-61ad-4501-b1b2-3109cd16347f)
 <img src = "https://user-images.githubusercontent.com/130833918/236200801-152b9487-5da9-47db-95ab-66050b849579.png" height = "400"></img>
 <img src = "" height = "400"></img>
-<img src = "" height = "400"></img>
+<img src = "https://github.com/Vedpatel28/contact_diary/assets/130833918/2e690a59-1519-4eb0-ae40-1f862089ca6c" height = "400"></img>
 <img src = "" height = "400"></img>
 <img src = "" height = "400"></img>
