@@ -72,32 +72,32 @@ class _splasescreenState extends State<splasescreen> {
                       waveColor: Colors.blueAccent.withOpacity(0.2),
                       trackColor: Colors.blueAccent.withOpacity(0.3),
                       curve: Curves.easeInOutQuart.flipped,
-                      child: GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            scal = 7.1;
-                            trax = 0;
-                            tray -= 300;
-                          });
-                        },
-                        // child: Transform.translate(
-                        //   offset: Offset(trax, tray),
-                        //   child: Transform.scale(
-                        //     scale: scal,
-                        //     child: Container(
-                        //       height: 20,
-                        //       width: 20,
-                        //       decoration: const BoxDecoration(
-                        //         shape: BoxShape.circle,
-                        //         image: DecorationImage(
-                        //           image: NetworkImage(
-                        //               "https://media2.giphy.com/media/Hg8sQkUKJcUqA/200w.gif?cid=6c09b9526fztovnnr2swbxoykldl8vrvxv86zj1q91hcju8a&ep=v1_gifs_search&rid=200w.gif&ct=g"),
-                        //         ),
-                        //       ),
-                        //     ),
-                        //   ),
-                        // ),
-                      ),
+                      // child: GestureDetector(
+                      //   onTap: () {
+                      //     setState(() {
+                      //       scal = 7.1;
+                      //       trax = 0;
+                      //       tray -= 300;
+                      //     });
+                      //   },
+                      //   // child: Transform.translate(
+                      //   //   offset: Offset(trax, tray),
+                      //   //   child: Transform.scale(
+                      //   //     scale: scal,
+                      //   //     child: Container(
+                      //   //       height: 20,
+                      //   //       width: 20,
+                      //   //       decoration: const BoxDecoration(
+                      //   //         shape: BoxShape.circle,
+                      //   //         image: DecorationImage(
+                      //   //           image: NetworkImage(
+                      //   //               "https://media2.giphy.com/media/Hg8sQkUKJcUqA/200w.gif?cid=6c09b9526fztovnnr2swbxoykldl8vrvxv86zj1q91hcju8a&ep=v1_gifs_search&rid=200w.gif&ct=g"),
+                      //   //         ),
+                      //   //       ),
+                      //   //     ),
+                      //   //   ),
+                      //   // ),
+                      // ),
                     ),
                   ],
                 ),
