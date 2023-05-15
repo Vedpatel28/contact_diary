@@ -15,5 +15,9 @@ For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 <br>
-<img src = "https://user-images.githubusercontent.com/130833918/236200801-152b9487-5da9-47db-95ab-66050b849579.png" height = "400"></img>
-<img src = "https://user-images.githubusercontent.com/130833918/236202127-a5f16381-b4f8-4a69-b869-7a76267e13c8.webm" height = "400"></img>
+<img src = "https://github.com/Vedpatel28/contact_diary/assets/130833918/7dfc93e5-737c-4d85-af17-b447cbe54560" height = "400"></img>
+<img src = "https://github.com/Vedpatel28/contact_diary/assets/130833918/8d5ac286-1b00-4118-bdab-1a890f65bdbf" height = "400"></img>
+<img src = "https://github.com/Vedpatel28/contact_diary/assets/130833918/2e690a59-1519-4eb0-ae40-1f862089ca6c" height = "400"></img>
+<img src = "https://github.com/Vedpatel28/contact_diary/assets/130833918/e3afac02-0c29-4351-83af-2d2e761febb2" height = "400"></img>
+<img src = "https://github.com/Vedpatel28/contact_diary/assets/130833918/ca523624-58f4-46af-a55c-1d0c47665c8f" height = "400"></img>
+[splash finel.webm](https://github.com/Vedpatel28/contact_diary/assets/130833918/793649c0-61ad-4501-b1b2-3109cd16347f)
