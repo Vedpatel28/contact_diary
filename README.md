@@ -21,4 +21,6 @@ samples, guidance on mobile development, and a full API reference.
 <img src = "https://github.com/Vedpatel28/contact_diary/assets/130833918/2e690a59-1519-4eb0-ae40-1f862089ca6c" height = "400"></img>
 <img src = "https://github.com/Vedpatel28/contact_diary/assets/130833918/e3afac02-0c29-4351-83af-2d2e761febb2" height = "400"></img>
 <br>
+<img src = "https://github.com/Vedpatel28/contact_diary/assets/130833918/ca523624-58f4-46af-a55c-1d0c47665c8f" height = "400"></img>
+<img src = "" height = "400"></img>
 <img src = "" height = "400"></img>
